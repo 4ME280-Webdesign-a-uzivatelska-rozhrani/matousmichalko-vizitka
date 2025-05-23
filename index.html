@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vizitka Fotografa</title>
+  <style>
+    body {
+      margin: 0;
+      background: #1c1c1c;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .camera {
+      width: 300px;
+      height: 200px;
+      background: #444;
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    }
+
+    .lens {
+      width: 100px;
+      height: 100px;
+      background: #000;
+      border: 10px solid #777;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 0 20px #00f;
+    }
+
+    .shutter {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 20px;
+      background: #999;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .flash.active {
+      opacity: 1;
+    }
+
+    .info {
+      text-align: center;
+      color: #fff;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="camera">
+    <div class="lens"></div>
+    <div class="shutter" onclick="triggerFlash()"></div>
+  </div>
+  <div class="info">
+    <h1>Matouš Michálko</h1>
+    <p>Fotograf</p>
+    <p>📞 +420 123 456 789</p>
+    <p>✉️ fotograf@email.com</p>
+  </div>
+  <div class="flash" id="flash"></div>
+
+  <script>
+    function triggerFlash() {
+      const flash = document.getElementById('flash');
+      flash.classList.add('active');
+      setTimeout(() => {
+        flash.classList.remove('active');
+      }, 100);
+    }
+  </script>
+</body>
+</html>
